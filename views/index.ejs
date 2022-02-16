@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-uk">
+
+<head>
+  <title>Blog App | <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+
+  <header>
+    <h1 class="center-text">
+      <%= title %>
+    </h1>
+    <a href="/">Home</a>
+  </header>
+
+  <% if (signedIn) { %>
+    <main>
+      <p>Hello <%= username %>
+      </p>
+
+      <form action="/logOut" method="post">
+        <button type="submit">log out</button>
+      </form>
+      
+      <div class="square-holder center-div">
+        <div class="flex-child square">
+          <h2 class="center-text">Create a Post</h2>
+          <p>Click <a href="/create">here</a> to create a new post.</p>
+        </div>
+
+        <div class="flex-child square">
+          <h2 class="center-text">View Posts</h2>
+          <p>Click <a href="/view">here</a> to view all posts.</p>
+        </div>
+      </div>
+
+    </main>
+    <% } else { %>
+
+
+
+      <main>
+        <div class="square-holder center-div">
+          <div class="flex-child square">
+            <h2 class="center-text">Log In</h2>
+            <p>If you've already got an account click <a href="/logIn">here</a>.</p>
+          </div>
+
+          <div class="flex-child square">
+            <h2 class="center-text">Sign Up</h2>
+            <p>Click <a href="/signUp">Sign Up</a> to create a new account</p>
+          </div>
+        </div>
+
+      </main>
+
+
+
+
+
+      <% } %>
+
+        <footer>
+          <p>Created by <a href="https://www.jackljones.com">Jack Jones</a></p>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+          integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+          crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+          crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+          crossorigin="anonymous"></script>
+        <script>
+          function goToLogIn() {
+            window.location.href = "/login";
+          }
+
+          function goToSignUp() {
+            window.location.href = "/signUp";
+          }
+
+          function logOut() {
+            eraseCookie("loggedIn");
+            window.location.href = "/";
+          }
+
+          function eraseCookie(name) {
+            document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          }
+
+        </script>
+</body>
+
+</html>
