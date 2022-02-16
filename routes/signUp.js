@@ -27,7 +27,7 @@ router.post("/signUp", function (req, res, next) {
       (err) => {
         if (err) {
           res.send(
-            '<script>window.alert("A user with this username already exists - please try again. If it is you, please log in");window.location.href = "/";</script>'
+            `<script>window.alert(${err.message});window.location.href = "/";</script>`
           );
         } else {
           res.send(
