@@ -26,12 +26,12 @@ router.post("/signUp", function (req, res, next) {
       [username, password],
       (err) => {
         if (err) {
-          db.kill();
+          
           res.send(
-            `<script>window.alert(${err.message});window.location.href = "/";</script>`
+            '<script>window.alert("Error adding user - this user may already exists please try again.");window.location.href = "/";</script>'
           );
         } else {
-          db.kill();
+          
           res.send(
             '<script>window.alert("Successfully created user, please log in");window.location.href = "/";</script>'
           );
