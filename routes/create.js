@@ -37,12 +37,12 @@ router.post("/create", function (req, res, next) {
       (err) => {
         if (err) {
           console.error(err);
-          db.kill();
+          
           res.send(
             "<script>window.alert('No blog post sent');window.location.href='/'</script>"
           );
         } else {
-          db.kill();
+          
           res.send(
             "<script>window.alert('Blog Post Created');window.location.href='/'</script>"
           );
